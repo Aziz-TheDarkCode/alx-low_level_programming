@@ -1,57 +1,43 @@
-#include "main.h"
+#include "holberton.h"
+
+int is_divisible(int num, int div);
+int is_prime_number(int n);
 
 /**
- *evaluate_num - recursion loop
- *@num: num
- *@iterator: number to iterate
- *Return: return 1 or 0
+ * is_divisible - Checks if a number is divisible.
+ * @num: The number to be checked.
+ * @div: The divisor.
+ *
+ * Return: If the number is divisible - 0.
+ *         If the number is not divisible - 1.
  */
-
-int evaluate_num(int num, int iterator)
+int is_divisible(int num, int div)
 {
+	if (num % div == 0)
+		return (0);
 
-if (iterator == num - 1)
-{
-return (1);
-}
+	if (div == num / 2)
+		return (1);
 
-else if (num % iterator == 0)
-{
-return (0);
-}
-
-if (num % iterator != 0)
-{
-return (evaluate_num(num, iterator + 1));
-}
-
-return (0);
-
+	return (is_divisible(num, div + 1));
 }
 
 /**
- *is_prime_number - evaluate prime or not
- *@num: number
- *Return: return 1 prime - return 0 otherwise
+ * is_prime_number - Checks if a number is prime.
+ * @n: The number to be checked.
+ *
+ * Return: If the integer is not prime - 0.
+ *         If the number is prime - 1.
  */
-
-int is_prime_number(int num)
+int is_prime_number(int n)
 {
+	int div = 2;
 
-int iterator;
+	if (n <= 1)
+		return (0);
 
-iterator = 2;
+	if (n >= 2 && n <= 3)
+		return (1);
 
-/* only greater than 2*/
-if (num < 2)
-{
-return (0);
-}
-
-if (num == 2)
-{
-return (1);
-}
-
-return (evaluate_num(num, iterator));
+	return (is_divisible(n, div));
 }

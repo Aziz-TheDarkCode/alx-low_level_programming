@@ -1,30 +1,25 @@
 #include <stdio.h>
+#include <unistd.h>
 /**
  * main - Entry point
- *
- * Return: Always 0 (Success/correct)
+ * Description: prints numbers
+ * Return: Always 0 (success)
  */
 int main(void)
-
 {
-int number;
+	int i;
 
+	for (i = '0'; i <= '9' ; i++)
+	{
+		putchar(i);
 
-for (number = 48; number <= 57; number++)
-{
-putchar(number);
+		if (i != '9')
+		{
+			putchar(',');
+			putchar(' ');
+		}
+	}
 
-if (number == 57)
-{
-break;
-}
-
-putchar(',');
-putchar (' ');
-}
-
-putchar('\n');
-
-return (0);
-
+	putchar('\n');
+	return (0);
 }
